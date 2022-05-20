@@ -1,10 +1,12 @@
 public class Client {
-    public String id;
-    public String fuLName;
+    private String id;
 
-    public Client(String id, String fuLName) {
+    private String fullName;
+
+    public Client(String id, String fullName) {
+        super();
         this.id = id;
-        this.fuLName = fuLName;
+        this.fullName = fullName;
     }
 
     public String getId() {
@@ -15,11 +17,12 @@ public class Client {
         this.id = id;
     }
 
-    public String getFuLName() {
-        return fuLName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFuLName(String fuLName) {
-        this.fuLName = fuLName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
+
 }
