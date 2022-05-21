@@ -1,5 +1,3 @@
-package beans;
-
 public class Client {
     private String id;
 
