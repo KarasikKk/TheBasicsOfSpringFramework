@@ -9,6 +9,7 @@
     </bean>
 
     <bean id="eventLogger" class="loggers.ConsoleEventLogger"/>
+
     <bean id="app" class="App">
         <constructor-arg ref="client"/>
         <constructor-arg ref="eventLogger"/>
@@ -20,5 +21,16 @@
         </constructor-arg>
         <constructor-arg ref="dateFormat"/>
     </bean>
+
     <bean id="dateFormat" class="java.text.DateFormat" factory-method="getDateTimeInstance"/>
+
+    <bean id="fileEventLogger" class="loggers.FileEventLogger" init-method="init">
+        <constructor-arg value="target/events_log.txt"/>
+    </bean>
+
+    <bean id="cacheFileEventLogger" class="loggers.CacheFileEventLogger" destroy-method="destroy">
+        <constructor-arg value="target/events_log.txt"/>
+        <constructor-arg value="5"/>
+    </bean>
+
 </beans>
