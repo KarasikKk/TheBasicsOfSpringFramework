@@ -1,4 +1,5 @@
 import beans.Client;
+import beans.Event;
 import loggers.EventLogger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -11,8 +12,11 @@ public class App {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("Config.xml");
         App app = (App) ctx.getBean("app");
 
-        app.logEvent("Some event for 1");
-        app.logEvent("Some event for 2");
+        Event event = ctx.getBean(Event.class);
+        app.logEvent(event, "Some event for 1");
+
+        event = ctx.getBean(Event.class);
+        app.logEvent(event, "Some event for 2");
     }
 
     public App(Client client, EventLogger eventLogger) {
@@ -21,8 +25,10 @@ public class App {
         this.eventLogger = eventLogger;
     }
 
-    private void logEvent(String msg) {
+    private void logEvent(Event event, String msg) {
         String message = msg.replaceAll(client.getId(), client.getFullName());
-        eventLogger.logEvent(message);
+        event.setMsg(message);
+        eventLogger.logEvent(event);
     }
+
 }
