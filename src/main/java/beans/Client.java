@@ -1,18 +1,12 @@
 package beans;
 
 public class Client {
+
     private String id;
+
     private String fullName;
 
-    public Client(String id, String fullName) {
-        super();
-        this.id = id;
-        this.fullName = fullName;
-    }
-
-    public void setGreeting(String gr){
-
-    }
+    private String greeting;
 
     public String getId() {
         return id;
@@ -28,6 +22,14 @@ public class Client {
 
     public void setFullName(String fullName) {
         this.fullName = fullName;
+    }
+
+    public String getGreeting() {
+        return greeting;
+    }
+
+    public void setGreeting(String greeting) {
+        this.greeting = greeting;
     }
 
 }
